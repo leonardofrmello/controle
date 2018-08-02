@@ -1,0 +1,14 @@
+C:\Users\Leo\Desktop\Controle\Csharp\controle\controle\bin\Debug\controle.exe.config
+C:\Users\Leo\Desktop\Controle\Csharp\controle\controle\bin\Debug\controle.exe
+C:\Users\Leo\Desktop\Controle\Csharp\controle\controle\bin\Debug\controle.pdb
+C:\Users\Leo\Desktop\Controle\Csharp\controle\controle\obj\Debug\controle.csprojResolveAssemblyReference.cache
+C:\Users\Leo\Desktop\Controle\Csharp\controle\controle\obj\Debug\controle.Controle.resources
+C:\Users\Leo\Desktop\Controle\Csharp\controle\controle\obj\Debug\controle.Properties.Resources.resources
+C:\Users\Leo\Desktop\Controle\Csharp\controle\controle\obj\Debug\controle.csproj.GenerateResource.cache
+C:\Users\Leo\Desktop\Controle\Csharp\controle\controle\obj\Debug\controle.csproj.CoreCompileInputs.cache
+C:\Users\Leo\Desktop\Controle\Csharp\controle\controle\obj\Debug\controle.exe
+C:\Users\Leo\Desktop\Controle\Csharp\controle\controle\obj\Debug\controle.pdb
+C:\Users\Leo\Desktop\Controle\Csharp\controle\controle\obj\Debug\controle.Funcionario.resources
+C:\Users\Leo\Desktop\Controle\Csharp\controle\controle\obj\Debug\controle.ProdComposto.resources
+C:\Users\Leo\Desktop\Controle\Csharp\controle\controle\obj\Debug\controle.ProdSimples.resources
+C:\Users\Leo\Desktop\Controle\Csharp\controle\controle\obj\Debug\controle.Requisicao.resources
