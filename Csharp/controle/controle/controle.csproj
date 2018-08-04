@@ -97,6 +97,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Requisicao.resx">
       <DependentUpon>Requisicao.cs</DependentUpon>
@@ -113,6 +114,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imgs\btnsave.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imgs\btnnovo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imgs\btnexcluir.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

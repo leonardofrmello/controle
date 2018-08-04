@@ -24,14 +24,9 @@ namespace controle
         }
 
         SqlConnection sqlcon = null;
-
-
-        //  string connectionString = "Data Source=.\\SQLEXPRESS;AttachDbFilename=C:\\dados\\NORTHWND.MDF;Integrated Security=True; Connect Timeout=30;User Instance=True";
-
-        //localhost\sqlexpress;Initial Catalog=ERP_ACESSO;Persist Security Info=True;User ID=sa;Password=mudar123
-        //private string strCon = "localhost\\sqlexpress;Initial Catalog=Controle;Persist Security Info=True;User ID=sa;Password=sivis123";
         private string strCon = "Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=Controle;Data Source=.\\sqlexpress";
         private string strSql = string.Empty;
+        private string comando = string.Empty;
 
         private void Funcionario_Load(object sender, EventArgs e)
         {
@@ -40,7 +35,7 @@ namespace controle
 
         private void Funcionario_Load_1(object sender, EventArgs e)
         {
-
+           dgFunc.DataSource = listaFunc(string.Empty);
         }
 
         private void label3_Click(object sender, EventArgs e)
@@ -50,47 +45,9 @@ namespace controle
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            strSql = "select * from Funcionario where Nome = @nome";
-
-            sqlcon = new SqlConnection(strCon);
-            SqlCommand comando = new SqlCommand(strSql, sqlcon);
-
-            comando.Parameters.Add("@nome", SqlDbType.VarChar).Value = txtPesquisa.Text;
-
-            try
-            {
-                if (txtPesquisa.Text == string.Empty)
-                {
-                    MessageBox.Show("Você precisa digitar um nome!");
-                }
-                sqlcon.Open();
-                SqlDataReader dr = comando.ExecuteReader();
-
-                if (dr.HasRows == false)
-                {
-                    throw new Exception("Este nome nao esta cadastrado");
-                }
-
-                dr.Read();
-
-                txtId.Text = Convert.ToString(dr["Id"]);
-                txtNome.Text = Convert.ToString(dr["Nome"]);
-                txtCPF.Text = Convert.ToString(dr["Cpf"]);
-                txtNome.Enabled = true;
-                txtCPF.Enabled = true;
-                btnEditar.Enabled = true;
-
-            }
-
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-
-            finally{
-                sqlcon.Close();
-            }
-
+            String query = string.Empty;
+            query = " where Nome like '%" + txtPesquisa.Text + "%'";
+            dgFunc.DataSource = listaFunc(query);
         }
 
         private void btnNovo_Click(object sender, EventArgs e)
@@ -99,47 +56,104 @@ namespace controle
             btnNovo.Enabled = false;
             btnEditar.Enabled = false;
             btnExcluir.Enabled = false;
-            btnBuscar.Enabled = false;
+
+            btnCancelar.Visible = true;
+            btnCancelar.Enabled = true;
+            
             txtNome.Enabled = true;
             txtCPF.Enabled = true;
+            txtPesquisa.Enabled = false;
+
+
+
+            txtId.Clear();
+            txtNome.Clear();
+            txtPesquisa.Clear();
+            txtCPF.Clear();
         }
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            strSql = "insert into Funcionario(Nome, Cpf) values(@nome, @cpf)";
-
-            sqlcon = new SqlConnection(strCon);
-            SqlCommand comando = new SqlCommand(strSql, sqlcon);
-
-            comando.Parameters.Add("@nome", SqlDbType.VarChar).Value = txtNome.Text;
-            comando.Parameters.Add("@cpf", SqlDbType.VarChar).Value = txtCPF.Text;
-
-            try
+            //insert
+            if (txtId.Text == string.Empty)
             {
-                sqlcon.Open();
-                comando.ExecuteNonQuery();
-                MessageBox.Show("Gravado com sucesso!!");
-                btnNovo.Enabled = true;
-                btnSalvar.Enabled = false;
-                btnEditar.Enabled = false;
-                btnExcluir.Enabled = false;
-                btnBuscar.Enabled = true;
-                txtNome.Enabled = false;
-                txtCPF.Enabled = false;
+                if (txtCPF.Text == string.Empty || txtNome.Text == string.Empty)
+                {
+                    MessageBox.Show("Existem campos em branco");
+                }
+                else
+                {
+                    strSql = "insert into Funcionario(Nome, Cpf) values(@nome, @cpf)";
 
-                txtNome.Clear();
-                txtCPF.Clear();
+                    sqlcon = new SqlConnection(strCon);
+                    SqlCommand comando = new SqlCommand(strSql, sqlcon);
+
+                    comando.Parameters.Add("@nome", SqlDbType.VarChar).Value = txtNome.Text;
+                    comando.Parameters.Add("@cpf", SqlDbType.VarChar).Value = txtCPF.Text;
+
+                    try
+                    {
+                        sqlcon.Open();
+                        comando.ExecuteNonQuery();
+                        dgFunc.DataSource = listaFunc(string.Empty);
+                        MessageBox.Show("Gravado com sucesso!!");
+                        btnNovo.Enabled = true;
+                        btnSalvar.Enabled = false;
+                        btnEditar.Enabled = false;
+                        btnExcluir.Enabled = false;
+                        txtNome.Enabled = false;
+                        txtCPF.Enabled = false;
+
+                        txtNome.Clear();
+                        txtCPF.Clear();
+
+                    }
+
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+
+                    finally
+                    {
+                        sqlcon.Close();
+                    }
+                }
+            }
+            //update
+            else
+            {
+                strSql = "UPDATE Funcionario set Nome = @nome, Cpf = @cpf where Id = @id";
+
+                sqlcon = new SqlConnection(strCon);
+                SqlCommand comando = new SqlCommand(strSql, sqlcon);
+
+                comando.Parameters.Add("@id", SqlDbType.VarChar).Value = txtId.Text;
+                comando.Parameters.Add("@nome", SqlDbType.VarChar).Value = txtNome.Text;
+                comando.Parameters.Add("@cpf", SqlDbType.VarChar).Value = txtCPF.Text;
+
+                try
+                {
+                    sqlcon.Open();
+                    comando.ExecuteNonQuery();
+                    MessageBox.Show("Dados alterados com sucesso!!");
+                    txtNome.Enabled = false;
+                    txtCPF.Enabled = false;
+                    dgFunc.DataSource = listaFunc(string.Empty);
+                }
+
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
+                finally
+                {
+                    sqlcon.Close();
+                }
             }
 
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-
-            finally
-            {
-                sqlcon.Close();
-            }
+            dgFunc.DataSource = listaFunc(string.Empty);
         }
 
         private void label4_Click(object sender, EventArgs e)
@@ -149,20 +163,85 @@ namespace controle
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            strSql = "UPDATE Funcionario set Nome = @nome, Cpf = @cpf where Id = @id";
 
+            if (txtId.Text != string.Empty)
+            {
+                txtNome.Enabled = true;
+                txtCPF.Enabled = true;
+                btnSalvar.Enabled = true;
+               
+            }
+
+        }
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+
+            if (txtId.Text != string.Empty)
+            {
+                strSql = "delete from Funcionario where Id = @id";
+
+                sqlcon = new SqlConnection(strCon);
+                SqlCommand comando = new SqlCommand(strSql, sqlcon);
+
+                comando.Parameters.Add("@id", SqlDbType.VarChar).Value = txtId.Text;
+
+                try
+                {
+                    sqlcon.Open();
+                    comando.ExecuteNonQuery();
+                    MessageBox.Show("Funcionário Excluido com sucesso!!");
+                    btnExcluir.Enabled = false;
+                    txtPesquisa.Clear();
+                    btnCancelar_Click(sender, e);
+                    dgFunc.DataSource = listaFunc(string.Empty);
+                }
+
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
+                finally
+                {
+                    sqlcon.Close();
+                }
+            }
+
+
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            txtId.Clear();
+            txtNome.Clear();
+            txtCPF.Clear();
+            txtPesquisa.Enabled = true;
+            txtId.Enabled = false;
+            txtNome.Enabled = false;
+            txtCPF.Enabled = false;
+
+            btnNovo.Enabled = true;
+            btnCancelar.Visible = false;
+
+        }
+
+        public DataTable listaFunc(string where)
+        {
+            strSql = "select [Id], [Nome], [Cpf] from Funcionario"+where;
             sqlcon = new SqlConnection(strCon);
-            SqlCommand comando = new SqlCommand(strSql, sqlcon);
-
-            comando.Parameters.Add("@id", SqlDbType.VarChar).Value = txtId.Text;
-            comando.Parameters.Add("@nome", SqlDbType.VarChar).Value = txtNome.Text;
-            comando.Parameters.Add("@cpf", SqlDbType.VarChar).Value = txtCPF.Text;
 
             try
             {
+                SqlCommand comando = new SqlCommand(strSql, sqlcon);
+                SqlDataAdapter adp = new SqlDataAdapter(comando);
+                DataTable dt = new DataTable();
+                adp.Fill(dt);
+
                 sqlcon.Open();
-                comando.ExecuteNonQuery();
-                MessageBox.Show("Dados alterados com sucesso!!");
+
+                return dt;
+
             }
 
             catch (Exception ex)
@@ -174,6 +253,61 @@ namespace controle
             {
                 sqlcon.Close();
             }
+            return null;
+        }
+
+        private void txtPesquisa_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgFunc_CellClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            txtId.Text = dgFunc.Rows[e.RowIndex].Cells[0].Value.ToString();
+            txtNome.Text = dgFunc.Rows[e.RowIndex].Cells[1].Value.ToString();
+            txtCPF.Text = dgFunc.Rows[e.RowIndex].Cells[2].Value.ToString();
+
+            if (txtId.Text != string.Empty)
+            {
+                btnEditar.Enabled = true;
+                btnExcluir.Enabled = true;
+            }
+                
+        }
+
+        private void label4_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtId_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtCPF_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
+        }
+
+        private void txtNome_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox3_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }
