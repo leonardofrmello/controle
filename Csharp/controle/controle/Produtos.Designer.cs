@@ -1,6 +1,6 @@
 ﻿namespace controle
 {
-    partial class ProdSimples
+    partial class Produtos
     {
         /// <summary>
         /// Required designer variable.
@@ -48,14 +48,24 @@
             this.btnBuscar = new System.Windows.Forms.Button();
             this.dgFunc = new System.Windows.Forms.DataGridView();
             this.txtPesquisa = new System.Windows.Forms.TextBox();
+            this.cbTipo = new System.Windows.Forms.ComboBox();
+            this.Tipo = new System.Windows.Forms.Label();
+            this.gbCompost = new System.Windows.Forms.GroupBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.btnAddProd = new System.Windows.Forms.Button();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgFunc)).BeginInit();
+            this.gbCompost.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.Tipo);
+            this.groupBox3.Controls.Add(this.cbTipo);
             this.groupBox3.Controls.Add(this.txtprecoVend);
             this.groupBox3.Controls.Add(this.txtprecoCust);
             this.groupBox3.Controls.Add(this.label1);
@@ -66,20 +76,20 @@
             this.groupBox3.Controls.Add(this.label2);
             this.groupBox3.Location = new System.Drawing.Point(19, 4);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(459, 139);
+            this.groupBox3.Size = new System.Drawing.Size(302, 170);
             this.groupBox3.TabIndex = 22;
             this.groupBox3.TabStop = false;
             // 
             // txtprecoVend
             // 
-            this.txtprecoVend.Location = new System.Drawing.Point(78, 109);
+            this.txtprecoVend.Location = new System.Drawing.Point(80, 132);
             this.txtprecoVend.Name = "txtprecoVend";
             this.txtprecoVend.Size = new System.Drawing.Size(94, 20);
             this.txtprecoVend.TabIndex = 17;
             // 
             // txtprecoCust
             // 
-            this.txtprecoCust.Location = new System.Drawing.Point(78, 84);
+            this.txtprecoCust.Location = new System.Drawing.Point(79, 107);
             this.txtprecoCust.Name = "txtprecoCust";
             this.txtprecoCust.Size = new System.Drawing.Size(94, 20);
             this.txtprecoCust.TabIndex = 16;
@@ -87,7 +97,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(7, 111);
+            this.label1.Location = new System.Drawing.Point(10, 134);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(69, 13);
             this.label1.TabIndex = 15;
@@ -113,7 +123,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(10, 87);
+            this.label3.Location = new System.Drawing.Point(13, 110);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(65, 13);
             this.label3.TabIndex = 2;
@@ -143,9 +153,9 @@
             this.groupBox2.Controls.Add(this.btnNovo);
             this.groupBox2.Controls.Add(this.btnEditar);
             this.groupBox2.Controls.Add(this.btnSalvar);
-            this.groupBox2.Location = new System.Drawing.Point(19, 160);
+            this.groupBox2.Location = new System.Drawing.Point(19, 180);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(459, 72);
+            this.groupBox2.Size = new System.Drawing.Size(753, 73);
             this.groupBox2.TabIndex = 21;
             this.groupBox2.TabStop = false;
             // 
@@ -216,16 +226,17 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnAddProd);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.btnBuscar);
             this.groupBox1.Controls.Add(this.dgFunc);
             this.groupBox1.Controls.Add(this.txtPesquisa);
-            this.groupBox1.Location = new System.Drawing.Point(19, 248);
+            this.groupBox1.Location = new System.Drawing.Point(19, 273);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(459, 291);
+            this.groupBox1.Size = new System.Drawing.Size(446, 313);
             this.groupBox1.TabIndex = 20;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Busca";
+            this.groupBox1.Text = "Produtos Simples";
             // 
             // label4
             // 
@@ -239,9 +250,9 @@
             // 
             // btnBuscar
             // 
-            this.btnBuscar.Location = new System.Drawing.Point(343, 20);
+            this.btnBuscar.Location = new System.Drawing.Point(314, 19);
             this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(75, 35);
+            this.btnBuscar.Size = new System.Drawing.Size(59, 35);
             this.btnBuscar.TabIndex = 7;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
@@ -266,17 +277,82 @@
             this.txtPesquisa.Size = new System.Drawing.Size(233, 20);
             this.txtPesquisa.TabIndex = 11;
             // 
-            // ProdSimples
+            // cbTipo
+            // 
+            this.cbTipo.FormattingEnabled = true;
+            this.cbTipo.Items.AddRange(new object[] {
+            "Simples",
+            "Composto"});
+            this.cbTipo.Location = new System.Drawing.Point(79, 80);
+            this.cbTipo.Name = "cbTipo";
+            this.cbTipo.Size = new System.Drawing.Size(121, 21);
+            this.cbTipo.TabIndex = 18;
+            this.cbTipo.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // Tipo
+            // 
+            this.Tipo.AutoSize = true;
+            this.Tipo.Location = new System.Drawing.Point(39, 83);
+            this.Tipo.Name = "Tipo";
+            this.Tipo.Size = new System.Drawing.Size(31, 13);
+            this.Tipo.TabIndex = 19;
+            this.Tipo.Text = "Tipo:";
+            // 
+            // gbCompost
+            // 
+            this.gbCompost.Controls.Add(this.btnAdd);
+            this.gbCompost.Controls.Add(this.dataGridView1);
+            this.gbCompost.Location = new System.Drawing.Point(474, 274);
+            this.gbCompost.Name = "gbCompost";
+            this.gbCompost.Size = new System.Drawing.Size(372, 312);
+            this.gbCompost.TabIndex = 23;
+            this.gbCompost.TabStop = false;
+            this.gbCompost.Text = "Lista de Produtos Adicionados";
+            this.gbCompost.Visible = false;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(18, 59);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dataGridView1.Size = new System.Drawing.Size(334, 204);
+            this.dataGridView1.TabIndex = 16;
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Image = global::controle.Properties.Resources.btnexcluir;
+            this.btnAdd.Location = new System.Drawing.Point(310, 18);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(42, 36);
+            this.btnAdd.TabIndex = 24;
+            this.btnAdd.UseVisualStyleBackColor = true;
+            // 
+            // btnAddProd
+            // 
+            this.btnAddProd.Image = global::controle.Properties.Resources.btnnovo;
+            this.btnAddProd.Location = new System.Drawing.Point(379, 20);
+            this.btnAddProd.Name = "btnAddProd";
+            this.btnAddProd.Size = new System.Drawing.Size(42, 36);
+            this.btnAddProd.TabIndex = 25;
+            this.btnAddProd.UseVisualStyleBackColor = true;
+            this.btnAddProd.Visible = false;
+            // 
+            // Produtos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(492, 553);
+            this.ClientSize = new System.Drawing.Size(884, 711);
+            this.Controls.Add(this.gbCompost);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Name = "ProdSimples";
+            this.Name = "Produtos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Produto Simples";
+            this.Text = "Produtos";
             this.Load += new System.EventHandler(this.ProdSimples_Load);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
@@ -284,6 +360,8 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgFunc)).EndInit();
+            this.gbCompost.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -310,5 +388,11 @@
         private System.Windows.Forms.TextBox txtprecoVend;
         private System.Windows.Forms.TextBox txtprecoCust;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label Tipo;
+        private System.Windows.Forms.ComboBox cbTipo;
+        private System.Windows.Forms.GroupBox gbCompost;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Button btnAddProd;
     }
 }

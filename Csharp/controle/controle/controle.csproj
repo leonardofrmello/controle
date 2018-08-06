@@ -90,11 +90,11 @@
     <Compile Include="ProdComposto.Designer.cs">
       <DependentUpon>ProdComposto.cs</DependentUpon>
     </Compile>
-    <Compile Include="ProdSimples.cs">
+    <Compile Include="Produtos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ProdSimples.Designer.cs">
-      <DependentUpon>ProdSimples.cs</DependentUpon>
+    <Compile Include="Produtos.Designer.cs">
+      <DependentUpon>Produtos.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -120,8 +120,8 @@
     <EmbeddedResource Include="ProdComposto.resx">
       <DependentUpon>ProdComposto.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ProdSimples.resx">
-      <DependentUpon>ProdSimples.cs</DependentUpon>
+    <EmbeddedResource Include="Produtos.resx">
+      <DependentUpon>Produtos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

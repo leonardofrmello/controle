@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace controle
 {
-    public partial class ProdSimples : Form
+    public partial class Produtos : Form
     {
-        public ProdSimples()
+        public Produtos()
         {
             InitializeComponent();
             txtId.Enabled = false;
@@ -24,6 +24,7 @@ namespace controle
             btnSalvar.Enabled = false;
             btnEditar.Enabled = false;
             btnExcluir.Enabled = false;
+            cbTipo.Enabled = false;
         }
 
         SqlConnection sqlcon = null;
@@ -55,6 +56,7 @@ namespace controle
             txtprecoCust.Enabled = true;
             txtprecoVend.Enabled = true;
             txtPesquisa.Enabled = false;
+            cbTipo.Enabled = true;
 
 
 
@@ -84,6 +86,7 @@ namespace controle
             txtNome.Enabled = false;
             txtprecoCust.Enabled = false;
             txtprecoVend.Enabled = false;
+            cbTipo.Enabled = true;
 
             btnNovo.Enabled = true;
             btnCancelar.Visible = false;
@@ -91,7 +94,7 @@ namespace controle
 
         public DataTable listaProdSimples(string where)
         {
-            strSql = "select [Id], [Nome], [Preco_custo],[Preco_venda] from Produtos" + where;
+            strSql = "select [Id], [Nome], [Tipo_prod],[Preco_custo],[Preco_venda] from Produtos" + where;
             sqlcon = new SqlConnection(strCon);
 
             try
@@ -130,7 +133,7 @@ namespace controle
                 }
                 else
                 {
-                    strSql = "insert into Produtos(Nome, Preco_custo, Preco_venda) values(@nome, @precocust, @precovenda)";
+                    strSql = "insert into Produtos(Nome, Preco_custo, Preco_venda, Tipo_prod) values(@nome, @precocust, @precovenda, @tipo)";
 
                     sqlcon = new SqlConnection(strCon);
                     SqlCommand comando = new SqlCommand(strSql, sqlcon);
@@ -138,6 +141,8 @@ namespace controle
                     comando.Parameters.Add("@nome", SqlDbType.VarChar).Value = txtNome.Text;
                     comando.Parameters.Add("@precocust", SqlDbType.VarChar).Value = txtprecoCust.Text;
                     comando.Parameters.Add("@precovenda", SqlDbType.VarChar).Value = txtprecoVend.Text;
+                    var tipoProd = (cbTipo.Text == "Simples" ? 1 : 2 );
+                    comando.Parameters.Add("@tipo", SqlDbType.VarChar).Value = tipoProd;
 
                     try
                     {
@@ -207,6 +212,23 @@ namespace controle
             }
 
             dgFunc.DataSource = listaProdSimples(string.Empty);
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var valor = cbTipo.Text.ToString();
+            if (valor == "Simples")
+            {
+                btnAddProd.Visible = false;
+                gbCompost.Visible = false;
+
+            }
+            else
+            {
+                btnAddProd.Visible = true;
+                gbCompost.Visible = true;
+            }
+            //ComboboxItem selectedCar = (ComboboxItem)cmb.SelectedItem;
         }
     }
 }

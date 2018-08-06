@@ -1,3 +1,5 @@
+--CREATE DATABASE Controle
+----------------------------------
 --drop table Funcionario
 
 CREATE TABLE Funcionario (
@@ -36,6 +38,7 @@ CREATE TABLE Produtos (
     Id int NOT NULL Identity,
     Nome varchar(300) NOT NULL,
     Preco_custo money NOT NULL,
+    Tipo_produto smallint NOT NULL,
     Preco_venda money NOT NULL,
     PRIMARY KEY (Id),
 );
