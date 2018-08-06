@@ -50,5 +50,11 @@ namespace controle
             Requisicao req = new Requisicao();
             req.ShowDialog();
         }
+
+        private void funcionariosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FuncionarioRelatorio funcRel = new FuncionarioRelatorio();
+            funcRel.ShowDialog();
+        }
     }
 }

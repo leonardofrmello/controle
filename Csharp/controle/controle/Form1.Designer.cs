@@ -34,12 +34,12 @@
             this.produtoSimplesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.produtoCompostoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.requisiçãoRetiradaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.sairToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.relatóriosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.funcionariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.produtosSimplesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.produtosCompostosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.requisicoesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sairToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -94,13 +94,6 @@
             this.requisiçãoRetiradaToolStripMenuItem.Text = "Requisição Retirada";
             this.requisiçãoRetiradaToolStripMenuItem.Click += new System.EventHandler(this.requisiçãoRetiradaToolStripMenuItem_Click);
             // 
-            // sairToolStripMenuItem
-            // 
-            this.sairToolStripMenuItem.Name = "sairToolStripMenuItem";
-            this.sairToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
-            this.sairToolStripMenuItem.Text = "Sair";
-            this.sairToolStripMenuItem.Click += new System.EventHandler(this.sairToolStripMenuItem_Click);
-            // 
             // relatóriosToolStripMenuItem
             // 
             this.relatóriosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -117,6 +110,7 @@
             this.funcionariosToolStripMenuItem.Name = "funcionariosToolStripMenuItem";
             this.funcionariosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.funcionariosToolStripMenuItem.Text = "Funcionarios";
+            this.funcionariosToolStripMenuItem.Click += new System.EventHandler(this.funcionariosToolStripMenuItem_Click);
             // 
             // produtosSimplesToolStripMenuItem
             // 
@@ -135,6 +129,13 @@
             this.requisicoesToolStripMenuItem.Name = "requisicoesToolStripMenuItem";
             this.requisicoesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.requisicoesToolStripMenuItem.Text = "Requisicoes";
+            // 
+            // sairToolStripMenuItem
+            // 
+            this.sairToolStripMenuItem.Name = "sairToolStripMenuItem";
+            this.sairToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.sairToolStripMenuItem.Text = "Sair";
+            this.sairToolStripMenuItem.Click += new System.EventHandler(this.sairToolStripMenuItem_Click);
             // 
             // Controle
             // 
