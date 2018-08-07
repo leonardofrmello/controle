@@ -1,4 +1,5 @@
 --CREATE DATABASE Controle
+drop database Controle
 ----------------------------------
 --drop table Funcionario
 
@@ -34,14 +35,16 @@ set dateformat dmy;
 --drop table Produtos
 --delete Produtos
 
+
 CREATE TABLE Produtos (
     Id int NOT NULL Identity,
     Nome varchar(300) NOT NULL,
     Preco_custo money NOT NULL,
-    Tipo_produto smallint NOT NULL,
+    Tipo_prod smallint NOT NULL,
     Preco_venda money NOT NULL,
     PRIMARY KEY (Id),
 );
+
 
 --insert into Produtos(Nome, Preco_custo,Preco_venda)values('Refrigerante Lata 350 ML', 0.85,1.20);
 --insert into Produtos(Nome, Preco_custo,Preco_venda)values('Café torrão e moído pacote 500 GR', 3.0, 4.50);
@@ -74,7 +77,8 @@ select * from ItemsRequisicao
 
 ---------------------------produtos comp----------------------
 select * from ProdComp
-drop table ProdComp;
+select * from Produtos
+--drop table ProdComp;
 
 CREATE TABLE ProdComp (
     Id_comp INT NOT NULL,
@@ -85,17 +89,13 @@ CREATE TABLE ProdComp (
     FOREIGN KEY (Id_comp) REFERENCES Produtos(Id),
 );
 
-insert ProdComp(Id_comp,Id_prod,Qnt_comp)values(4,9,12)
+--insert ProdComp(Id_comp,Id_prod,Qnt_comp)values(4,2,12)
+--insert ProdComp(Id_comp,Id_prod,Qnt_comp)values(3,1,1)
+--insert ProdComp(Id_comp,Id_prod,Qnt_comp)values(3,5,2)
+--insert ProdComp(Id_comp,Id_prod,Qnt_comp)values(3,6,2)
 
-insert ProdComp(Id_comp,Id_prod,Qnt_comp)values(5,8,1)
-insert ProdComp(Id_comp,Id_prod,Qnt_comp)values(6,8,1)
-insert ProdComp(Id_comp,Id_prod,Qnt_comp)values(7,8,1)
+select (select Nome from Produtos where Id = pc.Id_comp) NomeComp,ps.Nome, 
+ps.Preco_custo, ps.Preco_venda from 
+ProdComp pc
+inner join Produtos ps on pc.Id_prod = ps.Id
 
-select * from ProdComp
-
-4	Refrigerante Lata 350 ML	0,85	1,20
-5	Café torrão e moído pacote 500 GR	3,00	4,50
-6	Arroz branco tipo I pacote 5 KG	3,90	5,00
-7	Feijão preto tipo I pacote 1 Kg	1,80	2,90
-8	Cesta Basica	25,00	30,00
-9	Refrigerante Lata 350 ML fardo com 12 UN	10,00	15,00

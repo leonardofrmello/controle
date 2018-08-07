@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace controle
 {
-    public partial class Produtos : Form
+    public partial class ProdSimples : Form
     {
-        public Produtos()
+        public ProdSimples()
         {
             InitializeComponent();
             txtId.Enabled = false;
@@ -24,7 +24,6 @@ namespace controle
             btnSalvar.Enabled = false;
             btnEditar.Enabled = false;
             btnExcluir.Enabled = false;
-            cbTipo.Enabled = false;
         }
 
         SqlConnection sqlcon = null;
@@ -56,9 +55,6 @@ namespace controle
             txtprecoCust.Enabled = true;
             txtprecoVend.Enabled = true;
             txtPesquisa.Enabled = false;
-            cbTipo.Enabled = true;
-
-
 
             txtId.Clear();
             txtNome.Clear();
@@ -70,7 +66,7 @@ namespace controle
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             String query = string.Empty;
-            query = " where Nome like '%" + txtPesquisa.Text + "%'";
+            query = " and Nome like '%" + txtPesquisa.Text + "%'";
             dgFunc.DataSource = listaProdSimples(query);
         }
 
@@ -86,7 +82,6 @@ namespace controle
             txtNome.Enabled = false;
             txtprecoCust.Enabled = false;
             txtprecoVend.Enabled = false;
-            cbTipo.Enabled = true;
 
             btnNovo.Enabled = true;
             btnCancelar.Visible = false;
@@ -94,7 +89,7 @@ namespace controle
 
         public DataTable listaProdSimples(string where)
         {
-            strSql = "select [Id], [Nome], [Tipo_prod],[Preco_custo],[Preco_venda] from Produtos" + where;
+            strSql = "select [Id], [Nome], [Tipo_prod],[Preco_custo],[Preco_venda] from Produtos where Tipo_prod = 1" + where;
             sqlcon = new SqlConnection(strCon);
 
             try
@@ -133,7 +128,7 @@ namespace controle
                 }
                 else
                 {
-                    strSql = "insert into Produtos(Nome, Preco_custo, Preco_venda, Tipo_prod) values(@nome, @precocust, @precovenda, @tipo)";
+                    strSql = "insert into Produtos(Nome, Preco_custo, Preco_venda, Tipo_prod) values(@nome, @precocust, @precovenda, 1)";
 
                     sqlcon = new SqlConnection(strCon);
                     SqlCommand comando = new SqlCommand(strSql, sqlcon);
@@ -141,8 +136,7 @@ namespace controle
                     comando.Parameters.Add("@nome", SqlDbType.VarChar).Value = txtNome.Text;
                     comando.Parameters.Add("@precocust", SqlDbType.VarChar).Value = txtprecoCust.Text;
                     comando.Parameters.Add("@precovenda", SqlDbType.VarChar).Value = txtprecoVend.Text;
-                    var tipoProd = (cbTipo.Text == "Simples" ? 1 : 2 );
-                    comando.Parameters.Add("@tipo", SqlDbType.VarChar).Value = tipoProd;
+
 
                     try
                     {
@@ -216,19 +210,38 @@ namespace controle
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var valor = cbTipo.Text.ToString();
-            if (valor == "Simples")
+           
+        }
+
+        private void txtNome_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgFunc_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            txtId.Text = dgFunc.Rows[e.RowIndex].Cells[0].Value.ToString();
+            txtNome.Text = dgFunc.Rows[e.RowIndex].Cells[1].Value.ToString();
+            txtprecoCust.Text = dgFunc.Rows[e.RowIndex].Cells[3].Value.ToString();
+            txtprecoVend.Text = dgFunc.Rows[e.RowIndex].Cells[4].Value.ToString();
+
+            if (txtId.Text != string.Empty)
             {
-                btnAddProd.Visible = false;
-                gbCompost.Visible = false;
+                btnEditar.Enabled = true;
+                btnExcluir.Enabled = true;
+            }
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            if (txtId.Text != string.Empty)
+            {
+                txtNome.Enabled = true;
+                txtprecoCust.Enabled = true;
+                txtprecoVend.Enabled = true;
+                btnSalvar.Enabled = true;
 
             }
-            else
-            {
-                btnAddProd.Visible = true;
-                gbCompost.Visible = true;
-            }
-            //ComboboxItem selectedCar = (ComboboxItem)cmb.SelectedItem;
         }
     }
 }

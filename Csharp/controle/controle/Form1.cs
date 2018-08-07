@@ -30,7 +30,7 @@ namespace controle
 
         private void produtoSimplesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Produtos prodsimp = new Produtos();
+            ProdSimples prodsimp = new ProdSimples();
             prodsimp.ShowDialog();
         }
 

@@ -46,15 +46,25 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
             this.btnBuscar = new System.Windows.Forms.Button();
-            this.dgFunc = new System.Windows.Forms.DataGridView();
+            this.dgProdComp = new System.Windows.Forms.DataGridView();
             this.txtPesquisa = new System.Windows.Forms.TextBox();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.dgItemsAdicionados = new System.Windows.Forms.DataGridView();
+            this.dgAdicinarItems = new System.Windows.Forms.DataGridView();
+            this.groupItemsProd = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.dgProdSimples = new System.Windows.Forms.DataGridView();
+            this.prodSimples = new System.Windows.Forms.GroupBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtqnt = new System.Windows.Forms.TextBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgFunc)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgItemsAdicionados)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgProdComp)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgAdicinarItems)).BeginInit();
+            this.groupItemsProd.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgProdSimples)).BeginInit();
+            this.prodSimples.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox3
@@ -67,7 +77,7 @@
             this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Controls.Add(this.txtNome);
             this.groupBox3.Controls.Add(this.label2);
-            this.groupBox3.Location = new System.Drawing.Point(171, 6);
+            this.groupBox3.Location = new System.Drawing.Point(12, 12);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(276, 139);
             this.groupBox3.TabIndex = 25;
@@ -145,9 +155,9 @@
             this.groupBox2.Controls.Add(this.btnNovo);
             this.groupBox2.Controls.Add(this.btnEditar);
             this.groupBox2.Controls.Add(this.btnSalvar);
-            this.groupBox2.Location = new System.Drawing.Point(171, 162);
+            this.groupBox2.Location = new System.Drawing.Point(12, 162);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(392, 72);
+            this.groupBox2.Size = new System.Drawing.Size(334, 72);
             this.groupBox2.TabIndex = 24;
             this.groupBox2.TabStop = false;
             this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
@@ -218,14 +228,13 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.btnAdd);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.btnBuscar);
-            this.groupBox1.Controls.Add(this.dgFunc);
+            this.groupBox1.Controls.Add(this.dgProdComp);
             this.groupBox1.Controls.Add(this.txtPesquisa);
-            this.groupBox1.Location = new System.Drawing.Point(171, 250);
+            this.groupBox1.Location = new System.Drawing.Point(12, 287);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(530, 291);
+            this.groupBox1.Size = new System.Drawing.Size(431, 291);
             this.groupBox1.TabIndex = 23;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Busca";
@@ -242,24 +251,25 @@
             // 
             // btnBuscar
             // 
-            this.btnBuscar.Location = new System.Drawing.Point(308, 13);
+            this.btnBuscar.Location = new System.Drawing.Point(320, 19);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(75, 35);
             this.btnBuscar.TabIndex = 7;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
             // 
-            // dgFunc
+            // dgProdComp
             // 
-            this.dgFunc.AllowUserToAddRows = false;
-            this.dgFunc.AllowUserToDeleteRows = false;
-            this.dgFunc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgFunc.Location = new System.Drawing.Point(19, 60);
-            this.dgFunc.Name = "dgFunc";
-            this.dgFunc.ReadOnly = true;
-            this.dgFunc.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.dgFunc.Size = new System.Drawing.Size(399, 204);
-            this.dgFunc.TabIndex = 16;
+            this.dgProdComp.AllowUserToAddRows = false;
+            this.dgProdComp.AllowUserToDeleteRows = false;
+            this.dgProdComp.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgProdComp.Location = new System.Drawing.Point(19, 60);
+            this.dgProdComp.Name = "dgProdComp";
+            this.dgProdComp.ReadOnly = true;
+            this.dgProdComp.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgProdComp.Size = new System.Drawing.Size(399, 204);
+            this.dgProdComp.TabIndex = 16;
+            this.dgProdComp.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgFunc_CellClick);
             // 
             // txtPesquisa
             // 
@@ -272,32 +282,122 @@
             // 
             this.btnAdd.Image = global::controle.Properties.Resources.btnnovo1;
             this.btnAdd.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnAdd.Location = new System.Drawing.Point(395, 7);
+            this.btnAdd.Location = new System.Drawing.Point(272, 10);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(64, 47);
             this.btnAdd.TabIndex = 16;
             this.btnAdd.Text = "Adicionar";
             this.btnAdd.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // dgItemsAdicionados
+            // dgAdicinarItems
             // 
-            this.dgItemsAdicionados.AllowUserToAddRows = false;
-            this.dgItemsAdicionados.AllowUserToDeleteRows = false;
-            this.dgItemsAdicionados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgItemsAdicionados.Location = new System.Drawing.Point(453, 15);
-            this.dgItemsAdicionados.Name = "dgItemsAdicionados";
-            this.dgItemsAdicionados.ReadOnly = true;
-            this.dgItemsAdicionados.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.dgItemsAdicionados.Size = new System.Drawing.Size(281, 130);
-            this.dgItemsAdicionados.TabIndex = 26;
+            this.dgAdicinarItems.AllowUserToAddRows = false;
+            this.dgAdicinarItems.AllowUserToDeleteRows = false;
+            this.dgAdicinarItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgAdicinarItems.Location = new System.Drawing.Point(19, 55);
+            this.dgAdicinarItems.Name = "dgAdicinarItems";
+            this.dgAdicinarItems.ReadOnly = true;
+            this.dgAdicinarItems.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgAdicinarItems.Size = new System.Drawing.Size(395, 195);
+            this.dgAdicinarItems.TabIndex = 26;
+            this.dgAdicinarItems.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgAdicinarItems_CellClick);
+            this.dgAdicinarItems.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.os_CellContentClick);
+            // 
+            // groupItemsProd
+            // 
+            this.groupItemsProd.Controls.Add(this.button1);
+            this.groupItemsProd.Controls.Add(this.dgProdSimples);
+            this.groupItemsProd.Controls.Add(this.btnAdd);
+            this.groupItemsProd.Location = new System.Drawing.Point(453, 289);
+            this.groupItemsProd.Name = "groupItemsProd";
+            this.groupItemsProd.Size = new System.Drawing.Size(431, 292);
+            this.groupItemsProd.TabIndex = 27;
+            this.groupItemsProd.TabStop = false;
+            this.groupItemsProd.Text = "Items do Produto";
+            this.groupItemsProd.Visible = false;
+            // 
+            // button1
+            // 
+            this.button1.Image = global::controle.Properties.Resources.btnexcluir1;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.button1.Location = new System.Drawing.Point(340, 10);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 47);
+            this.button1.TabIndex = 16;
+            this.button1.Text = "Excluir";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // dgProdSimples
+            // 
+            this.dgProdSimples.AllowUserToAddRows = false;
+            this.dgProdSimples.AllowUserToDeleteRows = false;
+            this.dgProdSimples.AllowUserToOrderColumns = true;
+            this.dgProdSimples.AllowUserToResizeRows = false;
+            this.dgProdSimples.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgProdSimples.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgProdSimples.Location = new System.Drawing.Point(19, 60);
+            this.dgProdSimples.Name = "dgProdSimples";
+            this.dgProdSimples.ReadOnly = true;
+            this.dgProdSimples.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgProdSimples.RowTemplate.ReadOnly = true;
+            this.dgProdSimples.Size = new System.Drawing.Size(395, 204);
+            this.dgProdSimples.TabIndex = 16;
+            this.dgProdSimples.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgProdSimples_CellClick);
+            // 
+            // prodSimples
+            // 
+            this.prodSimples.Controls.Add(this.label6);
+            this.prodSimples.Controls.Add(this.txtqnt);
+            this.prodSimples.Controls.Add(this.button2);
+            this.prodSimples.Controls.Add(this.dgAdicinarItems);
+            this.prodSimples.Location = new System.Drawing.Point(453, 12);
+            this.prodSimples.Name = "prodSimples";
+            this.prodSimples.Size = new System.Drawing.Size(431, 271);
+            this.prodSimples.TabIndex = 28;
+            this.prodSimples.TabStop = false;
+            this.prodSimples.Text = "Produtos Simples";
+            this.prodSimples.Visible = false;
+            this.prodSimples.Enter += new System.EventHandler(this.groupBox4_Enter);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(16, 26);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(62, 13);
+            this.label6.TabIndex = 28;
+            this.label6.Text = "Quantidade";
+            // 
+            // txtqnt
+            // 
+            this.txtqnt.Location = new System.Drawing.Point(84, 22);
+            this.txtqnt.Name = "txtqnt";
+            this.txtqnt.Size = new System.Drawing.Size(100, 20);
+            this.txtqnt.TabIndex = 27;
+            this.txtqnt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtqnt_KeyPress);
+            // 
+            // button2
+            // 
+            this.button2.Image = global::controle.Properties.Resources.btnnovo1;
+            this.button2.Location = new System.Drawing.Point(190, 12);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(49, 37);
+            this.button2.TabIndex = 17;
+            this.button2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // ProdComposto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(847, 548);
-            this.Controls.Add(this.dgItemsAdicionados);
+            this.ClientSize = new System.Drawing.Size(994, 548);
+            this.Controls.Add(this.prodSimples);
+            this.Controls.Add(this.groupItemsProd);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -311,8 +411,12 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgFunc)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgItemsAdicionados)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgProdComp)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgAdicinarItems)).EndInit();
+            this.groupItemsProd.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgProdSimples)).EndInit();
+            this.prodSimples.ResumeLayout(false);
+            this.prodSimples.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -337,9 +441,16 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnBuscar;
-        private System.Windows.Forms.DataGridView dgFunc;
+        private System.Windows.Forms.DataGridView dgProdComp;
         private System.Windows.Forms.TextBox txtPesquisa;
         private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.DataGridView dgItemsAdicionados;
+        private System.Windows.Forms.DataGridView dgAdicinarItems;
+        private System.Windows.Forms.GroupBox groupItemsProd;
+        private System.Windows.Forms.DataGridView dgProdSimples;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.GroupBox prodSimples;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtqnt;
+        private System.Windows.Forms.Button button2;
     }
 }

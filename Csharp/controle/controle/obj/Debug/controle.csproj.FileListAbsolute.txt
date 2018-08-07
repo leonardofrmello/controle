@@ -10,7 +10,6 @@ C:\Users\Leo\Desktop\Controle\Csharp\controle\controle\obj\Debug\controle.exe
 C:\Users\Leo\Desktop\Controle\Csharp\controle\controle\obj\Debug\controle.pdb
 C:\Users\Leo\Desktop\Controle\Csharp\controle\controle\obj\Debug\controle.Funcionario.resources
 C:\Users\Leo\Desktop\Controle\Csharp\controle\controle\obj\Debug\controle.ProdComposto.resources
-C:\Users\Leo\Desktop\Controle\Csharp\controle\controle\obj\Debug\controle.ProdSimples.resources
 C:\Users\Leo\Desktop\Controle\Csharp\controle\controle\obj\Debug\controle.Requisicao.resources
 C:\Users\Leo\Desktop\Controle\Csharp\controle\controle\obj\Debug\controle.FuncionarioRelatorio.resources
 C:\Users\Leo\Desktop\Controle\Csharp\controle\controle\bin\Debug\CrystalDecisions.CrystalReports.Engine.dll
@@ -33,3 +32,4 @@ C:\Users\Leo\Desktop\Controle\Csharp\controle\controle\bin\Debug\ShockwaveFlashO
 C:\Users\Leo\Desktop\Controle\Csharp\controle\controle\bin\Debug\CrystalDecisions.ReportAppServer.CommonControls.dll
 C:\Users\Leo\Desktop\Controle\Csharp\controle\controle\bin\Debug\stdole.dll
 C:\Users\Leo\Desktop\Controle\Csharp\controle\controle\obj\Debug\controle.csproj.CopyComplete
+C:\Users\Leo\Desktop\Controle\Csharp\controle\controle\obj\Debug\controle.ProdSimples.resources
