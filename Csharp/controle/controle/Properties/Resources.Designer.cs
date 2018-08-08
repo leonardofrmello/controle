@@ -63,6 +63,16 @@ namespace controle.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap btnBusca {
+            get {
+                object obj = ResourceManager.GetObject("btnBusca", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap btncancel {
             get {
                 object obj = ResourceManager.GetObject("btncancel", resourceCulture);

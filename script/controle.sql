@@ -2,7 +2,7 @@
 drop database Controle
 ----------------------------------
 --drop table Funcionario
-
+select * from Funcionario
 CREATE TABLE Funcionario (
     Id int NOT NULL Identity,
     Nome varchar(255) NOT NULL,
@@ -20,11 +20,10 @@ select * from Funcionario
 CREATE TABLE Requisicao (
     Id int NOT NULL Identity,
     Dt_retirada datetime NOT NULL,
-    Id_func int Not Null,
-    PRIMARY KEY (Id),
-    FOREIGN KEY (Id_func) REFERENCES Funcionario(Id)
+    Funcionario varchar(256) Not Null,
+    PRIMARY KEY (Id)
 );
-
+select * from Requisicao
 ---------------------insert requisicoes--------------
 set dateformat dmy;
 --insert into Requisicao(Dt_retirada, Id_func)values('01/08/2018',1);
