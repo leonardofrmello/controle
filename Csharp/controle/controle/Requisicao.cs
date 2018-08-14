@@ -8,11 +8,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace controle
 {
     public partial class Requisicao : Form
     {
+        Thread th;
         SqlConnection sqlcon = null;
         private string strCon = "Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=Controle;Data Source=.\\sqlexpress";
         private string strSql = string.Empty;
@@ -29,6 +31,13 @@ namespace controle
             btnSalvar.Enabled = false;
             btnEditar.Enabled = false;
             btnExcluir.Enabled = false;
+
+        }
+
+        public Requisicao(string Valor)
+        {
+            InitializeComponent();
+            buscaRequisicao(Valor);
 
         }
 
@@ -168,8 +177,54 @@ namespace controle
 
         private void btnBusca_Click(object sender, EventArgs e)
         {
-            buscaRequisicoes busca = new buscaRequisicoes();
-            busca.Show();
+            this.Close();
+            th = new Thread(openNewForm);
+            th.SetApartmentState(ApartmentState.STA);
+            th.Start();
+        }
+
+        private void Requisicao_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void openNewForm()
+        {
+            Application.Run(new buscaRequisicoes());
+        }
+
+        private void buscaRequisicao(string id)
+        {
+            strSql = "select [id], [Dt_retirada], [Funcionario] " +
+                "from Requisicao where id="+id;
+            sqlcon = new SqlConnection(strCon);
+
+            try
+            {
+                sqlcon.Open();
+                SqlCommand comando = new SqlCommand(strSql, sqlcon);
+                SqlDataReader reader = comando.ExecuteReader();
+
+ 
+                while (reader.Read())
+                {
+                    txtId.Text = reader.GetValue(0).ToString();
+                    //MessageBox.Show(reader.GetString(2));
+
+                }
+
+
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            finally
+            {
+                sqlcon.Close();
+            }
         }
     }
 }

@@ -53,6 +53,7 @@
             this.dgRequisicoes.Size = new System.Drawing.Size(399, 204);
             this.dgRequisicoes.TabIndex = 17;
             this.dgRequisicoes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgFunc_CellContentClick);
+            this.dgRequisicoes.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgRequisicoes_CellDoubleClick);
             // 
             // txtFunc
             // 

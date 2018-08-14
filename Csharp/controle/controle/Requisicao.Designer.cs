@@ -29,11 +29,14 @@
         private void InitializeComponent()
         {
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.cbFunc = new System.Windows.Forms.ComboBox();
+            this.txtDate = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
             this.txtId = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnBusca = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnExcluir = new System.Windows.Forms.Button();
             this.btnNovo = new System.Windows.Forms.Button();
@@ -49,9 +52,6 @@
             this.button1 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.txtDate = new System.Windows.Forms.DateTimePicker();
-            this.cbFunc = new System.Windows.Forms.ComboBox();
-            this.btnBusca = new System.Windows.Forms.Button();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -73,6 +73,22 @@
             this.groupBox3.Size = new System.Drawing.Size(446, 123);
             this.groupBox3.TabIndex = 25;
             this.groupBox3.TabStop = false;
+            // 
+            // cbFunc
+            // 
+            this.cbFunc.FormattingEnabled = true;
+            this.cbFunc.Location = new System.Drawing.Point(79, 78);
+            this.cbFunc.Name = "cbFunc";
+            this.cbFunc.Size = new System.Drawing.Size(198, 21);
+            this.cbFunc.TabIndex = 19;
+            // 
+            // txtDate
+            // 
+            this.txtDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.txtDate.Location = new System.Drawing.Point(77, 52);
+            this.txtDate.Name = "txtDate";
+            this.txtDate.Size = new System.Drawing.Size(200, 20);
+            this.txtDate.TabIndex = 18;
             // 
             // label5
             // 
@@ -122,6 +138,19 @@
             this.groupBox2.Size = new System.Drawing.Size(446, 73);
             this.groupBox2.TabIndex = 24;
             this.groupBox2.TabStop = false;
+            // 
+            // btnBusca
+            // 
+            this.btnBusca.Image = global::controle.Properties.Resources.btnedit;
+            this.btnBusca.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnBusca.Location = new System.Drawing.Point(342, 14);
+            this.btnBusca.Name = "btnBusca";
+            this.btnBusca.Size = new System.Drawing.Size(75, 47);
+            this.btnBusca.TabIndex = 26;
+            this.btnBusca.Text = "Buscar";
+            this.btnBusca.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnBusca.UseVisualStyleBackColor = true;
+            this.btnBusca.Click += new System.EventHandler(this.btnBusca_Click);
             // 
             // btnCancelar
             // 
@@ -289,35 +318,6 @@
             this.textBox1.Size = new System.Drawing.Size(233, 20);
             this.textBox1.TabIndex = 11;
             // 
-            // txtDate
-            // 
-            this.txtDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.txtDate.Location = new System.Drawing.Point(77, 52);
-            this.txtDate.Name = "txtDate";
-            this.txtDate.Size = new System.Drawing.Size(200, 20);
-            this.txtDate.TabIndex = 18;
-            // 
-            // cbFunc
-            // 
-            this.cbFunc.FormattingEnabled = true;
-            this.cbFunc.Location = new System.Drawing.Point(79, 78);
-            this.cbFunc.Name = "cbFunc";
-            this.cbFunc.Size = new System.Drawing.Size(198, 21);
-            this.cbFunc.TabIndex = 19;
-            // 
-            // btnBusca
-            // 
-            this.btnBusca.Image = global::controle.Properties.Resources.btnedit;
-            this.btnBusca.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnBusca.Location = new System.Drawing.Point(342, 14);
-            this.btnBusca.Name = "btnBusca";
-            this.btnBusca.Size = new System.Drawing.Size(75, 47);
-            this.btnBusca.TabIndex = 26;
-            this.btnBusca.Text = "Buscar";
-            this.btnBusca.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnBusca.UseVisualStyleBackColor = true;
-            this.btnBusca.Click += new System.EventHandler(this.btnBusca_Click);
-            // 
             // Requisicao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -330,6 +330,7 @@
             this.Name = "Requisicao";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Requisicao";
+            this.Load += new System.EventHandler(this.Requisicao_Load);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);

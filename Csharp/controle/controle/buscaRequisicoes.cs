@@ -8,12 +8,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using System.Threading;
 namespace controle
 {
     public partial class buscaRequisicoes : Form
     {
-
+        Thread th;
         SqlConnection sqlcon = null;
         private string strCon = "Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=Controle;Data Source=.\\sqlexpress";
         private string strSql = string.Empty;
@@ -23,6 +23,9 @@ namespace controle
         public buscaRequisicoes()
         {
             InitializeComponent();
+
+            Requisicao destino = new Requisicao();
+            destino.Close();
         }
 
         private void dgFunc_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -66,6 +69,11 @@ namespace controle
             return null;
         }
 
+        private void openNewForm(object parameterObject)
+        {
+            Application.Run(new Requisicao());
+        }
+
         private void btnBusca_Click(object sender, EventArgs e)
         {
             string where = " where Id > 0";
@@ -94,6 +102,25 @@ namespace controle
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
+
+        }
+
+        private void dgRequisicoes_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var id = dgRequisicoes.Rows[e.RowIndex].Cells[0].Value.ToString();
+
+
+            this.Close();
+            Thread newThread = new Thread(openNewForm);
+            newThread.Start(id);
+
+
+            /*th = new Thread(openNewForm(id));
+            th.SetApartmentState(ApartmentState.STA);
+            th.Start();
+            */
+            //Requisicao destino = new Requisicao(id);
+            //destino.Show();
 
         }
     }

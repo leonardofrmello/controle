@@ -309,5 +309,10 @@ namespace controle
         {
 
         }
+
+        private void dgFunc_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
