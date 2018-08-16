@@ -34,3 +34,4 @@ C:\Users\Leo\Desktop\Controle\Csharp\controle\controle\bin\Debug\stdole.dll
 C:\Users\Leo\Desktop\Controle\Csharp\controle\controle\obj\Debug\controle.csproj.CopyComplete
 C:\Users\Leo\Desktop\Controle\Csharp\controle\controle\obj\Debug\controle.ProdSimples.resources
 C:\Users\Leo\Desktop\Controle\Csharp\controle\controle\obj\Debug\controle.buscaRequisicoes.resources
+C:\Users\Leo\Desktop\Controle\Csharp\controle\controle\obj\Debug\controle.addProdRequis.resources

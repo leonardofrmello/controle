@@ -52,6 +52,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="addProdRequis.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="addProdRequis.Designer.cs">
+      <DependentUpon>addProdRequis.cs</DependentUpon>
+    </Compile>
     <Compile Include="buscaRequisicoes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -110,6 +116,9 @@
     <Compile Include="Requisicao.Designer.cs">
       <DependentUpon>Requisicao.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="addProdRequis.resx">
+      <DependentUpon>addProdRequis.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="buscaRequisicoes.resx">
       <DependentUpon>buscaRequisicoes.cs</DependentUpon>
     </EmbeddedResource>

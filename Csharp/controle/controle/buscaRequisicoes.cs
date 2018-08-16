@@ -18,6 +18,7 @@ namespace controle
         private string strCon = "Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=Controle;Data Source=.\\sqlexpress";
         private string strSql = string.Empty;
         private string comando = string.Empty;
+        public string id;
      
 
         public buscaRequisicoes()
@@ -107,21 +108,8 @@ namespace controle
 
         private void dgRequisicoes_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            var id = dgRequisicoes.Rows[e.RowIndex].Cells[0].Value.ToString();
-
-
+            id = dgRequisicoes.Rows[e.RowIndex].Cells[0].Value.ToString();
             this.Close();
-            Thread newThread = new Thread(openNewForm);
-            newThread.Start(id);
-
-
-            /*th = new Thread(openNewForm(id));
-            th.SetApartmentState(ApartmentState.STA);
-            th.Start();
-            */
-            //Requisicao destino = new Requisicao(id);
-            //destino.Show();
-
         }
     }
 }

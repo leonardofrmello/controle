@@ -261,6 +261,7 @@
             this.dgFunc.Size = new System.Drawing.Size(399, 204);
             this.dgFunc.TabIndex = 16;
             this.dgFunc.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgFunc_CellClick);
+            this.dgFunc.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgFunc_CellContentClick);
             // 
             // txtPesquisa
             // 
