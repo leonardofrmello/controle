@@ -238,11 +238,18 @@ namespace controle
             idRequisicao = txtId.Text;
             addProdRequis add = new addProdRequis(idRequisicao);
             add.ShowDialog();
+
+            if (txtId.Text != string.Empty && txtId.Text != "" && txtId.Text != null)
+            {
+                dgProdReq.DataSource = buscaProdutosRequisicao(txtId.Text);
+            }
+
+
         }
 
         public DataTable buscaProdutosRequisicao(string idReq)
         {
-            strSql = "select P.Id id_Produto,P.Nome,ir.Qnt_prod,ir.Preco from Requisicao r inner join ItemsRequisicao ir on r.Id = ir.Id_req inner join Produtos P on ir.Id_prod = P.Id where r.id = "+ idReq;
+            strSql = "select ir.Id,P.Id id_Produto,P.Nome,ir.Qnt_prod,ir.Preco from Requisicao r inner join ItemsRequisicao ir on r.Id = ir.Id_req inner join Produtos P on ir.Id_prod = P.Id where r.id = "+ idReq;
             sqlcon = new SqlConnection(strCon);
 
             try
@@ -299,7 +306,7 @@ namespace controle
         {
            string idProd = dgProdReq.CurrentRow.Cells[0].Value.ToString();
 
-            strSql = "delete from ItemsRequisicao where Id_req="+txtId.Text+" and Id_prod ="+idProd;
+            strSql = "delete from ItemsRequisicao where Id_req="+txtId.Text+" and Id ="+idProd;
 
             sqlcon = new SqlConnection(strCon);
             SqlCommand comando = new SqlCommand(strSql, sqlcon);
